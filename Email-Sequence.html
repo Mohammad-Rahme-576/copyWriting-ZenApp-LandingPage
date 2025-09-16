@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarkBox Email Welcome Sequence - Portfolio Sample</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .project-info {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .info-item h3 {
+            color: #4a5568;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .info-item p {
+            color: #2d3748;
+            font-weight: 500;
+        }
+
+        .strategy-section {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            margin-top: 20px;
+        }
+
+        .strategy-section h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+
+        .email-sequence {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .email-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .email-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .email-header {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 20px 25px;
+            position: relative;
+        }
+
+        .email-card:nth-child(2) .email-header {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+        }
+
+        .email-card:nth-child(3) .email-header {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+
+        .email-number {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .email-meta {
+            margin-bottom: 15px;
+        }
+
+        .subject-line {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .preheader {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .email-preview {
+            background: #fafafa;
+            border: 1px solid #e2e8f0;
+            margin: 20px 25px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .preview-header {
+            background: #e2e8f0;
+            padding: 8px 15px;
+            font-size: 0.8rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .email-body {
+            padding: 25px;
+            background: white;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .email-body h4 {
+            color: #2d3748;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+
+        .email-body p {
+            margin-bottom: 15px;
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        .email-body ul {
+            margin: 15px 0 15px 20px;
+            color: #4a5568;
+        }
+
+        .email-body li {
+            margin-bottom: 8px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px 0;
+            transition: transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .strategy-notes {
+            background: #f0f4f8;
+            padding: 20px 25px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .strategy-notes h4 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .strategy-notes p {
+            color: #4a5568;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .results-section {
+            background: linear-gradient(135deg, #2d3748, #4a5568);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .results-section h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .result-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .result-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #81e6d9;
+            margin-bottom: 5px;
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 15px;
+        }
+
+        .contact-button {
+            background: white;
+            color: #667eea;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .email-body {
+                padding: 20px;
+            }
+            
+            .project-info, .email-card {
+                margin: 0 10px 20px 10px;
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-indicator:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐕 BarkBox Email Welcome Sequence</h1>
+            <p>Email Marketing Portfolio Sample</p>
+            <div style="background: rgba(255,255,255,0.1); display: inline-block; padding: 10px 20px; border-radius: 25px; margin-top: 10px;">
+                <strong>Created by: Email Marketing Copywriter</strong>
+            </div>
+        </div>
+
+        <div class="project-info">
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>Project Type</h3>
+                    <p>Email Welcome Sequence</p>
+                </div>
+                <div class="info-item">
+                    <h3>Industry</h3>
+                    <p>Pet Subscription Service</p>
+                </div>
+                <div class="info-item">
+                    <h3>Sequence Length</h3>
+                    <p>3 Emails over 7 Days</p>
+                </div>
+                <div class="info-item">
+                    <h3>Primary Goal</h3>
+                    <p>Reduce Early Churn & Build Excitement</p>
+                </div>
+            </div>
+            
+            <div class="strategy-section">
+                <h3>🎯 Strategy Overview</h3>
+                <p><strong>Problem:</strong> New BarkBox subscribers only received basic order confirmations, leading to low engagement and potential early cancellations before their first box arrived.</p>
+                <br>
+                <p><strong>Solution:</strong> A 3-email welcome sequence that builds anticipation, delivers immediate value, and establishes the brand personality while addressing common customer concerns proactively.</p>
+            </div>
+        </div>
+
+        <div class="email-sequence">
+            <!-- Email 1 -->
+            <div class="email-card">
+                <div class="email-header">
+                    <div class="email-number">1</div>
+                    <div class="email-meta">
+                        <div class="subject-line">🐕 Welcome to the pack! Your pup's adventure starts now</div>
+                        <div class="preheader">Here's what to expect from your monthly BarkBox delivery (plus a special surprise inside!)</div>
+                    </div>
+                </div>
+                
+                <div class="email-preview">
+                    <div class="preview-header">📧 Email Preview - Sent immediately after signup</div>
+                    <div class="email-body">
+                        <p><strong>Hey [Name]!</strong></p>
+                        
+                        <p>Welcome to BarkBox! 🎉 Your furry best friend just hit the jackpot, and we couldn't be more excited to spoil them rotten.</p>
+                        
+                        <h4>Here's what makes your monthly BarkBox special:</h4>
+                        <ul>
+                            <li>2 innovative toys designed just for your dog's size</li>
+                            <li>2-3 all-natural treats (we're talking drool-worthy good)</li>
+                            <li>1 delicious chew that'll keep those teeth happy and healthy</li>
+                        </ul>
+                        
+                        <p>Every month, our team of dog lovers curates a themed box that'll have your pup doing happy zoomies around the house. Think "Pawty Time," "Outdoor Adventure," or "Cozy Winter Nights" – each one packed with surprises!</p>
+                        
+                        <p>Your first box ships on <strong>[DATE]</strong> and should arrive within 5-7 business days. We'll send you tracking info the moment it leaves our warehouse.</p>
+                        
+                        <a href="#" class="cta-button">GET READY - SET UP YOUR DOG'S PROFILE</a>
+                        
+                        <p>Can't wait? Set up your pup's profile now to help us pick the perfect toys and treats for their size, chewing style, and any allergies. It takes just 2 minutes!</p>
+                        
+                        <p>Tail wags and slobbery kisses,<br>
+                        The BarkBox Pack 🐾</p>
+                        
+                        <p><em>P.S. Follow us on Instagram [@barkbox] to see other pups unboxing their monthly surprises!</em></p>
+                    </div>
+                </div>
+                
+                <div class="strategy-notes">
+                    <h4>Strategy Notes</h4>
+                    <p>Email 1 focuses on setting clear expectations and immediate engagement. The CTA drives profile completion, which increases personalization and reduces churn. Social proof elements and specific delivery timelines build trust.</p>
+                </div>
+            </div>
+
+            <!-- Email 2 -->
+            <div class="email-card">
+                <div class="email-header">
+                    <div class="email-number">2</div>
+                    <div class="email-meta">
+                        <div class="subject-line">🧠 The 2-minute trick that'll blow your dog's mind</div>
+                        <div class="preheader">Plus: meet the toy that 94% of dogs go absolutely crazy for!</div>
+                    </div>
+                </div>
+                
+                <div class="email-preview">
+                    <div class="preview-header">📧 Email Preview - Sent 3 days after signup</div>
+                    <div class="email-body">
+                        <p><strong>Hey [Name]!</strong></p>
+                        
+                        <p>Quick question: does your pup get bored easily? Here's a game-changing trick from our in-house dog behaviorist that'll keep them entertained for hours.</p>
+                        
+                        <h4>The "Snuffle Mat" DIY Hack:</h4>
+                        <p>Grab a rubber doormat and tie fleece strips through the holes. Hide treats throughout the "grass" and watch your dog's natural foraging instincts kick in! It's like a treasure hunt that tires out their brain AND burns energy.</p>
+                        
+                        <p><strong>Pro tip:</strong> This works especially well for fast eaters – it naturally slows them down.</p>
+                        
+                        <h4>Speaking of favorites...</h4>
+                        <p>Meet the <strong>Super Chewer Benebone</strong> – the toy that's earned a permanent spot in our Hall of Fame! This little genius has a 94% approval rating from our BarkBox families.</p>
+                        
+                        <p><strong>Why dogs (and parents) love it:</strong></p>
+                        <ul>
+                            <li>✓ Flavored with real bacon (seriously, they can't resist)</li>
+                            <li>✓ Designed for aggressive chewers who destroy everything else</li>
+                            <li>✓ Helps clean teeth while they chew</li>
+                            <li>✓ Made in the USA with safe, durable materials</li>
+                        </ul>
+                        
+                        <p>The best part? It might just be waiting for your pup in their upcoming BarkBox! 🎁</p>
+                        
+                        <a href="#" class="cta-button">BROWSE OUR TOY HALL OF FAME</a>
+                        
+                        <p>Happy playing!<br>
+                        The BarkBox Team 🐕</p>
+                        
+                        <p><em>P.S. Tag us in your pup's reaction videos – we love seeing those tail-wagging unboxing moments!</em></p>
+                    </div>
+                </div>
+                
+                <div class="strategy-notes">
+                    <h4>Strategy Notes</h4>
+                    <p>Email 2 delivers immediate value with the DIY tip while showcasing product quality through social proof (94% approval). This builds anticipation for the first box while establishing expertise and trust.</p>
+                </div>
+            </div>
+
+            <!-- Email 3 -->
+            <div class="email-card">
+                <div class="email-header">
+                    <div class="email-number">3</div>
+                    <div class="email-meta">
+                        <div class="subject-line">📦 Incoming! Your pup's BarkBox ships tomorrow</div>
+                        <div class="preheader">Track your package, manage preferences, and get help – we've got you covered!</div>
+                    </div>
+                </div>
+                
+                <div class="email-preview">
+                    <div class="preview-header">📧 Email Preview - Sent day before first box ships</div>
+                    <div class="email-body">
+                        <p><strong>Hey [Name]!</strong></p>
+                        
+                        <p>The moment you've both been waiting for is almost here! 🎉</p>
+                        
+                        <p>Your pup's first BarkBox ships <strong>tomorrow</strong> and will arrive within 5-7 business days. You'll get tracking details sent straight to your inbox once it's on its way.</p>
+                        
+                        <h4>Quick reminder of what's inside:</h4>
+                        <p>This month's theme is "Pawsome Playground" featuring outdoor adventure toys and energy-boosting treats perfect for active pups who love to explore.</p>
+                        
+                        <h4>Need help with anything?</h4>
+                        <p>We want to make sure your BarkBox experience is absolutely perfect. Here are a few things you can easily manage:</p>
+                        
+                        <ul>
+                            <li>🐕 <strong>Update your dog's profile</strong> (size, allergies, chewing style)</li>
+                            <li>📅 <strong>Change your delivery date</strong></li>
+                            <li>⏸️ <strong>Skip a month</strong> if you're going out of town</li>
+                            <li>💬 <strong>Chat with our customer happiness team</strong> (seriously, they're the best!)</li>
+                        </ul>
+                        
+                        <a href="#" class="cta-button">MANAGE MY ACCOUNT</a>
+                        
+                        <p>Have questions before your box arrives? Just hit reply to this email – our team responds within 2 hours during business days.</p>
+                        
+                        <p><strong>One last thing:</strong> Keep your camera ready! The unboxing experience is half the fun, and your pup's reaction is guaranteed to melt your heart.</p>
+                        
+                        <p>Can't wait for you both to experience the BarkBox magic!</p>
+                        
+                        <p>Woofs and wags,<br>
+                        Sarah & The BarkBox Pack 🐾</p>
+                        
+                        <p><em>P.S. Already obsessed? Refer friends and earn a free box for every signup. It's our way of saying thanks for spreading the puppy love!</em></p>
+                    </div>
+                </div>
+                
+                <div class="strategy-notes">
+                    <h4>Strategy Notes</h4>
+                    <p>Email 3 creates urgency and anticipation while proactively addressing customer service needs. The account management CTA reduces support tickets, and the referral mention plants seeds for future growth.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-section">
+            <h2>📈 Expected Results & Impact</h2>
+            <p>This welcome sequence is designed to improve key metrics through strategic timing and value delivery:</p>
+            
+            <div class="results-grid">
+                <div class="result-item">
+                    <div class="result-number">25%</div>
+                    <p>Reduction in early churn through better expectation setting</p>
+                </div>
+                <div class="result-item">
+                    <div class="result-number">40%</div>
+                    <p>Increase in profile completion rates with strategic CTA placement</p>
+                </div>
+                <div class="result-item">
+                    <div class="result-number">60%</div>
+                    <p>Improvement in customer satisfaction through proactive support</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2>Ready to Create High-Converting Email Sequences?</h2>
+            <p>Let's discuss your email marketing needs and create sequences that engage, convert, and retain your customers.</p>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mohammadrahme74@gmail.com&su=Email%20Marketing%20Inquiry&body=Hi%20Mohammad%2C%0AI%27m%20interested%20in%20your%20email%20copywriting%20services." target="_blank" class="contact-button" style="margin-top:10px;">Get In Touch</a>
+        </div>
+    </div>
+
+    <div class="scroll-indicator" onclick="scrollToTop()">
+        ↑
+    </div>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide scroll indicator
+        window.addEventListener('scroll', function() {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            if (window.pageYOffset > 300) {
+                scrollIndicator.style.opacity = '1';
+            } else {
+                scrollIndicator.style.opacity = '0.7';
+            }
+        });
+
+        // Add smooth scrolling for mobile
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
