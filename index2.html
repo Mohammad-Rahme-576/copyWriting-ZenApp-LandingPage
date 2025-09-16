@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoHome - E-commerce Copywriting Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #4a7c59;
+            --light-green: #8fc0a9;
+            --cream: #faf3e0;
+            --brown: #8b6f47;
+            --dark-text: #2c3e2c;
+            --light-bg: #f9f7f4;
+            --white: #ffffff;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-hover: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-green);
+        }
+
+        .logo::before {
+            content: "🌿";
+            font-size: 2rem;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: var(--brown);
+            font-weight: normal;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .search-bar {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--light-green);
+            border-radius: 25px;
+            width: 200px;
+            transition: all 0.3s;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            width: 250px;
+            border-color: var(--primary-green);
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--brown);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        /* Portfolio Badge */
+        .portfolio-badge {
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--light-green);
+            opacity: 0.1;
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--brown);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .strategy-note {
+            background: var(--white);
+            border-left: 4px solid var(--primary-green);
+            padding: 1rem 1.5rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: var(--shadow);
+            text-align: left;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .strategy-note h3 {
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .badge:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Product Grid */
+        .products {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--light-green);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .limited-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--brown);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            z-index: 1;
+            animation: pulse 2s infinite;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--cream), var(--light-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::after {
+            content: "BESTSELLER";
+            position: absolute;
+            top: 20px;
+            left: -30px;
+            background: var(--primary-green);
+            color: white;
+            padding: 0.3rem 2rem;
+            transform: rotate(-45deg);
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            color: var(--dark-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-container {
+            text-align: right;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-green);
+        }
+
+        .original-price {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #ffd700;
+        }
+
+        .review-count {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .product-description {
+            color: var(--dark-text);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            background: var(--cream);
+            padding: 1rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .product-description::before {
+            content: "“";
+            position: absolute;
+            top: -5px;
+            left: 10px;
+            font-size: 3rem;
+            color: var(--light-green);
+            opacity: 0.5;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        .stock-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--light-green);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(74, 124, 89, 0.3);
+        }
+
+        .add-to-cart::after {
+            content: "→";
+            position: absolute;
+            right: 20px;
+            transition: transform 0.3s;
+        }
+
+        .add-to-cart:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* Copywriting Showcase */
+        .copywriting-showcase {
+            background: var(--white);
+            padding: 4rem 0;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .showcase-card {
+            padding: 2rem;
+            background: var(--cream);
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .showcase-card:hover {
+            transform: scale(1.05);
+        }
+
+        .showcase-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .before-after {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .before-after h4 {
+            color: var(--brown);
+            margin-bottom: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            top: -250px;
+            left: -250px;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hire-button {
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            background: var(--white);
+            color: var(--primary-green);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .hire-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 0;
+            background: var(--light-bg);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: "“";
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 3rem;
+            color: var(--light-green);
+            opacity: 0.3;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-green);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--light-green);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            padding: 0.3rem 0;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li:hover {
+            color: var(--light-green);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--light-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-green);
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: var(--cream);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            padding: 1rem;
+            border: 2px solid var(--light-green);
+            border-radius: 50px;
+            width: 300px;
+            transition: border-color 0.3s;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+        }
+
+        .newsletter-button {
+            padding: 1rem 2rem;
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .newsletter-button:hover {
+            background: var(--light-green);
+            transform: scale(1.05);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-right {
+                gap: 1rem;
+            }
+
+            .search-bar {
+                width: 150px;
+            }
+
+            .search-bar:focus {
+                width: 180px;
+            }
+
+            .cta-title {
+                font-size: 1.8rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Portfolio Badge -->
+    <div class="portfolio-badge">
+        📝 PORTFOLIO SAMPLE - E-commerce Copywriting by [Your Name]
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                EcoHome
+                <span class="tagline">Sustainable Living Made Simple</span>
+            </div>
+            <div class="nav-right">
+                <input type="text" class="search-bar" placeholder="Search products...">
+                <div class="cart-icon">
+                    🛒
+                    <span class="cart-badge">3</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>3 Product Descriptions That Convert</h1>
+            <p class="hero-subtitle">Premium E-commerce Copy That Turns Browsers Into Buyers</p>
+            
+            <div class="strategy-note">
+                <h3>💡 Copywriting Strategy</h3>
+                <p>These product descriptions use emotional storytelling, sensory language, and benefit-focused copy to create desire and urgency. Notice how each description paints a picture of the customer's improved life, not just product features.</p>
+            </div>
+
+            <div class="trust-badges">
+                <div class="badge">✅ 30-Day Returns</div>
+                <div class="badge">🚚 Free Shipping $50+</div>
+                <div class="badge">🌱 Eco-Certified</div>
+                <div class="badge">🔒 Secure Checkout</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Featured Sustainable Products</h2>
+            
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <span class="limited-badge">LIMITED STOCK</span>
+                    <div class="product-image">🎋 <img src="bamboo.png" alt="Bamboo Image" /></div>
+                    <div class="product-content">
+                        <div class="product-header">
+                            <div>
+                                <h3 class="product-title">Premium Bamboo Cutting Board</h3>
+                                <p style="color: #666; font-size: 0.9rem;">Large Chef's Board</p>
+                            </div>
+                            <div class="price-container">
+                                <div class="original-price">$69.99</div>
+                                <div class="price">$49.99</div>
+                            </div>
+                        </div>
+                        
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="review-count">(124 reviews)</span>
+                        </div>
+
+                        <div class="product-description">
+                            Transform your kitchen prep into a chef's paradise with this stunning bamboo cutting board that's as beautiful as it is functional. Feel the smooth, silky surface glide effortlessly under your knife while the natural antibacterial properties of bamboo keep your family safe. The rich, honey-colored grain adds warmth to your countertop, making every meal prep feel like an artisanal experience.
+                        </div>
+
+                        <ul class="features">
+                            <li>Naturally antibacterial surface</li>
+                            <li>Knife-friendly, self-healing bamboo</li>
+                            <li>Extra-large dimensions (18" x 12" x 1.5")</li>
+                            <li>Sustainable & renewable resource</li>
+                        </ul>
+
+                        <span class="stock-status">In Stock - Only 5 Left!</span>
+                        
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">🐝<img src="beesWax.png" alt="Beeswax Image" /></div>
+                    <div class="product-content">
+                        <div class="product-header">
+                            <div>
+                                <h3 class="product-title">Organic Beeswax Food Wraps</h3>
+                                <p style="color: #666; font-size: 0.9rem;">6-Pack Assorted Sizes</p>
+                            </div>
+                            <div class="price-container">
+                                <div class="price">$24.99</div>
+                            </div>
+                        </div>
+                        
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="review-count">(89 reviews)</span>
+                        </div>
+
+                        <div class="product-description">
+                            Ditch the plastic and wrap your food in nature's own preservation magic. These gorgeous beeswax wraps mold perfectly around bowls, sandwiches, and fresh produce with just the warmth of your hands, creating an airtight seal that keeps food fresher longer.
+                        </div>
+
+                        <ul class="features">
+                            <li>Complete size variety for all needs</li>
+                            <li>12-month lifespan with proper care</li>
+                            <li>All-natural ingredients</li>
+                            <li>Easy care & refresh instructions</li>
+                        </ul>
+
+                        <span class="stock-status">In Stock</span>
+                        
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 3 (Additional product for showcase) -->
+                <div class="product-card">
+                    <span class="limited-badge">BESTSELLER</span>
+                    <div class="product-image">🧺 <img src="Woven-Storage-Basket.png" alt="Woven-Storage-Basket Image" /></div>
+                    <div class="product-content">
+                        <div class="product-header">
+                            <div>
+                                <h3 class="product-title">Woven Storage Baskets Set</h3>
+                                <p style="color: #666; font-size: 0.9rem;">3-Pack Natural Seagrass</p>
+                            </div>
+                            <div class="price-container">
+                                <div class="original-price">$89.99</div>
+                                <div class="price">$64.99</div>
+                            </div>
+                        </div>
+                        
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="review-count">(203 reviews)</span>
+                        </div>
+
+                        <div class="product-description">
+                            Declutter your space with these handwoven seagrass baskets that bring both function and coastal charm to any room. Each basket tells a story of traditional craftsmanship while offering sturdy, versatile storage that grows more beautiful with age.
+                        </div>
+
+                        <ul class="features">
+                            <li>Handwoven by skilled artisans</li>
+                            <li>Three nested sizes for versatility</li>
+                            <li>Reinforced handles for durability</li>
+                            <li>100% natural, biodegradable materials</li>
+                        </ul>
+
+                        <span class="stock-status">In Stock</span>
+                        
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Copywriting Showcase Section -->
+    <section class="copywriting-showcase">
+        <div class="container">
+            <h2 class="section-title">The Copywriting Difference</h2>
+            
+            <div class="showcase-grid">
+                <div class="showcase-card">
+                    <h3>🎯 Conversion Elements</h3>
+                    <ul>
+                        <li><strong>Scarcity:</strong> "Only 5 Left!" creates urgency</li>
+                        <li><strong>Social Proof:</strong> Star ratings & review counts</li>
+                        <li><strong>Sensory Language:</strong> "Smooth, silky surface"</li>
+                        <li><strong>Benefit-First:</strong> Focus on lifestyle improvements</li>
+                    </ul>
+                </div>
+
+                <div class="showcase-card">
+                    <h3>📈 Before vs. After</h3>
+                    <div class="before-after">
+                        <h4>❌ Generic Copy:</h4>
+                        <p>"Bamboo cutting board. Made from bamboo. Good for cutting."</p>
+                    </div>
+                    <div class="before-after">
+                        <h4>✅ Compelling Copy:</h4>
+                        <p>"Transform your kitchen prep into a chef's paradise..."</p>
+                    </div>
+                </div>
+
+                <div class="showcase-card">
+                    <h3>💰 ROI Focus</h3>
+                    <p>Professional copy increases conversion rates by up to 73%. Each product description is crafted to:</p>
+                    <ul>
+                        <li>Reduce cart abandonment</li>
+                        <li>Increase average order value</li>
+                        <li>Build brand loyalty</li>
+                        <li>Minimize returns</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Clients Say</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The product descriptions increased our conversion rate by 45% in just one month. Worth every penny!"</p>
+                    <p class="testimonial-author">- Sarah M., E-commerce Director</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Finally, copy that captures our brand voice AND sells. Our customers love the storytelling approach."</p>
+                    <p class="testimonial-author">- Mike T., Founder</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Professional, timely, and the copy just works. Our best ROI on marketing spend this year."</p>
+                    <p class="testimonial-author">- Emma L., Marketing Manager</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="section-title">Join Our Eco-Friendly Community</h2>
+        <p>Get exclusive discounts and sustainable living tips delivered to your inbox.</p>
+        <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Enter your email address...">
+            <button type="submit" class="newsletter-button">Subscribe</button>
+        </form>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-content container">
+        <h2 class="cta-title">Ready to Boost Your Sales?</h2>
+        <p class="cta-subtitle">Let's craft compelling copy that converts for your e-commerce store.</p>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mohammadrahme74@gmail.com&su=Copywriting%20Inquiry%20from%20Portfolio&body=Hi%20Mohammad%2C%0AI%27m%20interested%20in%20your%20services." target="_blank" class="hire-button">Hire Me on Upwork</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About EcoHome</h4>
+                <p>This is a fictional brand for a copywriting portfolio. The mission is to showcase high-conversion copy in a realistic e-commerce setting.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Shop Categories</h4>
+                <ul>
+                    <li>Kitchen</li>
+                    <li>Home Goods</li>
+                    <li>Personal Care</li>
+                    <li>On The Go</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li>Contact Us</li>
+                    <li>FAQ</li>
+                    <li>Shipping & Returns</li>
+                    <li>Track Order</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <p>Follow our (fictional) journey on social media.</p>
+                <div class="social-icons">
+                    <div class="social-icon">IG</div>
+                    <div class="social-icon">FB</div>
+                    <div class="social-icon">PT</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 EcoHome (Portfolio Sample) | Design & Copy by [Your Name]</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Simple script to simulate loading effect for product cards
+    document.addEventListener('DOMContentLoaded', () => {
+        const productCards = document.querySelectorAll('.product-card');
+
+        productCards.forEach(card => {
+            const content = card.innerHTML;
+            card.innerHTML = ''; // Clear content
+            card.classList.add('loading'); // Add loading shimmer
+            
+            // Simulate loading delay
+            setTimeout(() => {
+                card.innerHTML = content;
+                card.classList.remove('loading');
+                
+                // Re-add bestseller ribbon if it was there
+                const imageDiv = card.querySelector('.product-image');
+                if (card.querySelector('.limited-badge')?.textContent.includes('BESTSELLER')) {
+                    imageDiv.classList.add('bestseller-image');
+                }
+
+            }, 1500); // 1.5 second delay
+        });
+    });
+</script>
+
+</body>
+</html>
